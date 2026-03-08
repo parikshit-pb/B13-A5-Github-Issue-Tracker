@@ -3,9 +3,65 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Issue Tracker</title>
+     <!-- font awesome -->
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+     <!-- tailwind daisy ui -->
+      <link href="https://cdn.jsdelivr.net/npm/daisyui@5" rel="stylesheet" type="text/css" />
+<script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+<link rel="stylesheet" href="./style/style.css">
 </head>
-<body>
-    <h1>hello maim page</h1>
+<body class="bg-gray-100">
+<nav class=" bg-white shadow p-4 flex justify-between">
+    <div class="flex items-center gap-3">
+        <img class="w-8" src="./assets/github-logo.png" alt="">
+    <h1 class="text-xl font-bold">GitHub Issue Tracker</h1>
+    </div>
+    <div class="gap-10 flex">
+        <input id="searchInput" type="text" class="border p-1 rounded-md" placeholder="Search">
+        <button onclick="searchIssue()" class="bg-blue-500 text-white px-3 py-1 rounded-md">+ New Issue</button>
+    </div>
+</nav>
+<section class="tab">
+    <div class="max-w-6xl mx-auto mt-6">
+        <div class="flex gap-4 mb-6">
+            <button onclick="filterIssue('all')" class="tabBtn bg-gray-200 px-4 py-2">All</button>
+            <button onclick="filterIssue('open')" class="tabBtn bg-gray-200 px-4 py-2">open</button>
+            <button onclick="filterIssue('closed')" class="tabBtn bg-gray-200 px-4 py-2">closed</button>
+        </div>
+    </div>
+
+   
+</section>
+ <div class="flex justify-between">
+        <div class="flex gap-4 items-center">
+            <img src="./assets/Aperture.png" alt="">
+            <div>
+                <h3 class="text-2xl font-bold">50 Issues</h3>
+                <p>Track and manage your project issues</p>
+            </div>
+        </div>
+        <div class="flex">
+            <div>
+                <div></div>
+                <p>Open</p>
+            </div>
+            <div>
+                <div></div>
+                <p>Closed</p>
+            </div>
+        </div>
+    </div>
+
+
+    <div id="issueContainer" class="grid md:grid-cols-4 gap-4">
+
+
+    </div>
+    
+
+    <script src="./assets/js/data.js"></script>
+    <script src="./assets/js/main.js"></script>
 </body>
 </html>

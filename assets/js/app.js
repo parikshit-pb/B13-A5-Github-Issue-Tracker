@@ -6,7 +6,7 @@ loginBtn.addEventListener("click",() => {
 
 
     if( username === "admin" && password === "admin123") {
-        alert("Login successfull");
+        // alert("Login successfull");
         window.location.href = "main.html";
     }else {
         alert("Invalid credentials!")
