@@ -34,3 +34,14 @@ function loadIssues(data) {
     })
 }
 loadIssues(issues)
+
+
+function filterIssue(status) {
+    if(status === "all") {
+        loadIssues(issues)
+    }else{
+        const filtered = issues.filter(issue => issue.status === status);
+        loadIssues(filtered) 
+    }
+}
+
