@@ -86,11 +86,27 @@
 
 - Create a readme file and answer this question on your own. Don’t copy-paste from Google or any AI chatbot. 
     - 1️⃣ What is the difference between var, let, and const?
-    - 2️⃣ What is the spread operator (...)?
-    - 3️⃣ What is the difference between map(), filter(), and forEach()?
-    - 4️⃣ What is an arrow function?
-    - 5️⃣ What are template literals?
+    In JavaScript, var, let, and const are used to declare variables, but they have important differences. var is function-scoped, meaning it is accessible within the function where it is declared, while let and const are block-scoped, meaning they are only accessible within the {} block in which they are defined. var allows redeclaration of the same variable, but let and const do not allow redeclaration in the same scope. When it comes to reassignment, both var and let allow their values to be changed after declaration, whereas const does not allow reassignment once a value is assigned. In terms of hoisting, var is hoisted and initialized with undefined, so it can be accessed before declaration without an error, while let and const are also hoisted but remain in the Temporal Dead Zone, which means accessing them before declaration results in an error. In modern JavaScript, const is generally preferred as the default choice, let is used when a variable’s value needs to change, and var is mostly avoided.
 
+    - 2️⃣ What is the spread operator (...)?
+    The spread operator (...) in JavaScript is used to expand (spread) elements of an array, object, or iterable into individual elements. It helps in copying, merging, or passing values easily without modifying the original data.
+
+    - 3️⃣ What is the difference between map(), filter(), and forEach()?
+    In JavaScript, map(), filter(), and forEach() are array methods, but they are used for different purposes.
+
+map() is used when you want to transform each element of an array and return a new array with the modified values. It always returns a new array of the same length as the original array.
+
+filter() is used to create a new array with only the elements that satisfy a given condition. It returns a subset of the original array based on a test function.
+
+forEach() is used to iterate over each element of an array and perform an action, but it does not return a new array. It is mainly used for side effects like logging or updating variables.
+
+In summary, map() is for transforming data and returns a new array, filter() is for selecting specific elements based on a condition, and forEach() is for looping through elements without returning anything.
+
+    - 4️⃣ What is an arrow function?
+    An arrow function is a shorter and more modern way to write functions in JavaScript, introduced in ES6. It uses the => (arrow) syntax instead of the traditional function keyword. Arrow functions make code cleaner and more concise, especially for simple operations.
+
+    - 5️⃣ What are template literals?
+Template literals are a feature in JavaScript that allow you to create strings using backticks (`) instead of quotes. They make it easier to include variables, expressions, and multi-line strings inside a string.
 
 ---
 

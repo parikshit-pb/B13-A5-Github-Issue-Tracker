@@ -16,7 +16,7 @@ const issues = [
 },
 {
 "id": 2,
-"title": "Add dark mode support",
+"title": "Add dark mode support device",
 "description": "Users are requesting a dark mode option. This would improve accessibility and user experience.",
 "status": "open",
 "labels": [
@@ -46,7 +46,7 @@ const issues = [
 {
 "id": 4,
 "title": "Performance issues with large datasets",
-"description": "Application becomes slow when loading more than 1000 items. Need to implement pagination or virtual scrolling.",
+"description": "Application becomes slow when loading more than 1000 items. Need to implement pagination or virtual.",
 "status": "open",
 "labels": [
 "bug",
@@ -74,8 +74,8 @@ const issues = [
 },
 {
 "id": 6,
-"title": "Fix broken image uploads",
-"description": "Users are unable to upload images larger than 5MB. Need to increase the file size limit or add compression.",
+"title": "Fix broken image uploads device",
+"description": "Users are unable to upload images larger than 5MB. Need to increase the file size limit.",
 "status": "open",
 "labels": [
 "bug"
@@ -88,7 +88,7 @@ const issues = [
 },
 {
 "id": 7,
-"title": "Improve search functionality",
+"title": "Improve search functionality device",
 "description": "Add filters for advanced search including date ranges, status, and tags.",
 "status": "open",
 "labels": [
@@ -117,7 +117,7 @@ const issues = [
 },
 {
 "id": 9,
-"title": "Add export to PDF feature",
+"title": "Add export to PDF feature device",
 "description": "Users want to export reports and dashboards to PDF format for sharing and printing.",
 "status": "open",
 "labels": [
@@ -145,7 +145,7 @@ const issues = [
 },
 {
 "id": 11,
-"title": "Create API documentation",
+"title": "Create API documentation device",
 "description": "Generate comprehensive API documentation using Swagger or similar tool.",
 "status": "open",
 "labels": [
@@ -204,7 +204,7 @@ const issues = [
 {
 "id": 15,
 "title": "Memory leak in dashboard component",
-"description": "Dashboard component causes memory leak after prolonged use. Need to investigate event listeners and cleanup.",
+"description": "Dashboard component causes memory leak after prolonged use. Need to investigate event.",
 "status": "open",
 "labels": [
 "bug"
@@ -217,7 +217,7 @@ const issues = [
 },
 {
 "id": 16,
-"title": "Add multi-language support",
+"title": "Add multi-language support device",
 "description": "Internationalize the application to support multiple languages including Spanish, French, and German.",
 "status": "open",
 "labels": [
@@ -245,8 +245,8 @@ const issues = [
 },
 {
 "id": 18,
-"title": "Refactor user settings page",
-"description": "User settings page code is messy and hard to maintain. Needs refactoring with better component structure.",
+"title": "Refactor user settings page setup",
+"description": "User settings page code is messy and hard to maintain. Needs refactoring with better.",
 "status": "closed",
 "labels": [
 "enhancement"

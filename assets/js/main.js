@@ -1,8 +1,21 @@
 const container = document.getElementById("issueContainer")
+const tabs = document.querySelectorAll(".filter-btn");
+const cardCount = document.querySelector(".card-count");
 
+let issue = [];
+fetch ("https://phi-lab-server.vercel.app/api/v1/lab/issues")
+.then(res => res.json())
+.then(data => {
+    issue = data.issues || data;
+     loadIssues(issues);
+})
+.catch(err => console.log(err));
+
+                   
 function loadIssues(data) {
     
-    container.innerHTML = ""
+    container.innerHTML = "";
+    cardCount.innerText = data.length + " Issues"
     data.forEach(issue => {
 
         const borderColor = issue.status === "open"
@@ -11,7 +24,7 @@ function loadIssues(data) {
 
         const card = `
         
-        <div class="bg-white p-4 rounded shadow border-t-4 ${borderColor}">
+        <div onclick="loadIssueDetails(${issue.id})" class="cursor-pointer bg-white p-4 rounded shadow border-t-4 ${borderColor}">
 
             <div class="flex justify-between mb-3">
             
@@ -25,21 +38,24 @@ function loadIssues(data) {
             </div>
             <h2 class="font-bold text-2xl mb-2">${issue.title}</h2>
 
-            <p class="text-gray-500 text-sm mb-4">${issue.description}</p>
+            <p class="text-gray-500 text-sm mb-4">${issue.description.slice(0,80)}</p>
+
+            <div class="flex gap-2 mb-4">
+
+            <span class="border border-red-300 text-red-500 text-xs px-3 py-1 rounded-full">
+            ${issue.label}
+            </span>
+
+            </div>
+            <hr class="mb-3">
 
             <p>Status: ${issue.status}</p>
 
-            <p>Category: ${issue.category}</p>
-
-            <p>Author: ${issue.author}</p>
-
-            <p>Priority: ${issue.priority}</p>
-
-            <p>Label: ${issue.label}</p>
+           
 
             <p>${issue.createdAt}</p>
 
-             <p></p>
+            
 
         </div>
         `
@@ -47,10 +63,40 @@ function loadIssues(data) {
         container.innerHTML += card
     })
 }
-loadIssues(issues)
+// loadIssues(issues)
+setActiveTab("all")
+
+function loadIssueDetails(id) {
+    const loader = document.getElementById("loader")
+    loader.classList.remove("hidden")
+
+    fetch(`https://phi-lab-server.vercel.app/api/v1/lab/issue/${id}`)
+        .then(res => res.json())
+        .then(data => {
+            const issue = data.issue || data;
+            openModal(issue);
+        })
+    
+        .catch(err => console.log(err))
+         .finally(() => loader.classList.add("hidden"));
+}
+
+function setActiveTab(activeStatus) {
+    tabs.forEach(tab => {
+        tab.classList.remove("bg-blue-500", "text-white");
+        tab.classList.add("bg-gray-200", "text-black");
+
+        if(tab.dataset.status === activeStatus) {
+            tab.classList.remove("bg-gray-200", "text-black");
+            tab.classList.add("bg-blue-500", "text-white");
+        }
+    })
+}
 
 
 function filterIssue(status) {
+    setActiveTab(status);
+
     if(status === "all") {
         loadIssues(issues)
     }else{
@@ -75,18 +121,24 @@ function showLoader(){
     },1000)
 }
 
-// function loadIssues(data) {
-//     showLoader()
-//     container.innerHTML = ""
-//     data.forEach(issue => {
-//         const borderColor = issue.status === "open"
-//         `
-//         <div class="bg-white p-4 rounded shadow">
-//         <h2>${issue.title}</h2>
-//         <p>${issue.description}</p>
+function openModal(issue) {
+    const modal = document.getElementById("issueModal");
 
-//         </div>
-//         `
-//         container.innerHTML += card
-//     })
-// }
+    document.getElementById("modalTitle").innerText = issue.title;
+    document.getElementById("modalDesc").innerText = issue.description;
+    document.getElementById("modalStatus").innerText = issue.status;
+    document.getElementById("modalAuthor").innerText = issue.author || "Unknown";
+    document.getElementById("modalPriority").innerText = issue.priority;
+    document.getElementById("modalLabel").innerText = issue.label;
+    document.getElementById("modalDate").innerText = issue.createdAt;
+
+
+    modal.classList.remove("hidden");
+    modal.classList.add("flex");
+}
+
+function closeModal () {
+    const modal = document.getElementById("issueModal");
+    modal.classList.add("hidden");
+    modal.classList.remove("flex")
+}
